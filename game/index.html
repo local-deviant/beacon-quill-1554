@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMBER PACT — Duel Kartu Melawan Ashen Warden</title>
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="hud-title">EMBER PACT</div>
+    <div class="hud-stats">
+      <span id="hud-score">Skor 0</span>
+      <span id="hud-turn">Giliran 1</span>
+      <span id="hud-best">Terbaik 0</span>
+    </div>
+    <div class="hud-buttons">
+      <button id="mute-button" type="button">Suara: Nyala (M)</button>
+      <button id="pause-button" type="button">Jeda (Esc)</button>
+      <button id="restart-button" type="button">Ulang (R)</button>
+    </div>
+  </header>
+
+  <main id="table">
+    <section id="warden-zone" class="side-zone">
+      <div class="portrait warden-portrait" aria-label="Ashen Warden">W</div>
+      <div class="side-info">
+        <div class="side-name">Ashen Warden <span id="warden-count" class="hand-count"></span></div>
+        <div class="life-bar"><div id="warden-life-fill" class="life-fill warden"></div><span id="warden-life-text" class="life-text"></span></div>
+        <div class="side-row"><span id="warden-shield" class="shield-badge"></span><span class="ember-label">Ember</span><span id="warden-ember" class="pips"></span></div>
+      </div>
+      <div id="warden-hand" class="opponent-hand"></div>
+    </section>
+
+    <div id="intent" class="intent-line">Warden menunggu gilirannya…</div>
+
+    <section id="center-zone">
+      <div id="played-slot" class="played-slot"></div>
+      <div id="resonance-banner" class="resonance-banner"></div>
+      <ul id="log" class="log"></ul>
+    </section>
+
+    <section id="player-zone" class="side-zone">
+      <div class="portrait player-portrait" aria-label="Penjaga Lentera">L</div>
+      <div class="side-info">
+        <div class="side-name">Penjaga Lentera <span id="player-count" class="hand-count"></span></div>
+        <div class="life-bar"><div id="player-life-fill" class="life-fill player"></div><span id="player-life-text" class="life-text"></span></div>
+        <div class="side-row"><span id="player-shield" class="shield-badge"></span><span class="ember-label">Ember</span><span id="player-ember" class="pips"></span></div>
+      </div>
+      <button id="end-turn" type="button">Akhiri Giliran</button>
+    </section>
+
+    <div id="player-hand" class="player-hand"></div>
+  </main>
+</div>
+
+<div id="title-screen" class="overlay">
+  <div class="panel">
+    <h1>EMBER PACT</h1>
+    <p class="tagline">Duel kartu melawan Ashen Warden di meja bara.</p>
+    <p class="goal">Kurangi life Warden dari 30 ke 0. Mainkan kartu dengan ember, padukan dua kartu
+      elemen sama dalam satu giliran untuk memicu <b>Resonansi</b>, dan baca niat Warden sebelum ia menyerang.</p>
+    <div class="howto">
+      <div><b>▲ Flame</b> merah — serangan membara</div>
+      <div><b>▼ Tide</b> biru — pertahanan tenang</div>
+      <div><b>◆ Thorn</b> hijau — kombinasi berduri</div>
+      <div><b>✦ Gale</b> ungu — badai yang cepat</div>
+    </div>
+    <p class="controls">Klik kartu atau tekan 1–7 untuk memainkannya · Enter/Space akhiri giliran ·
+      R ulang · M suara · Esc jeda</p>
+    <button id="start-button" type="button" class="big-button">Mulai Duel</button>
+    <p id="title-best" class="best-line">Skor terbaik: 0</p>
+  </div>
+</div>
+
+<div id="win-screen" class="overlay hidden">
+  <div class="panel win">
+    <h1 class="win-title">VICTORY</h1>
+    <p class="win-sub">Warden padam. Lentera tetap menyala!</p>
+    <p id="win-score" class="final-score">Skor 0</p>
+    <div id="win-stats" class="stats"></div>
+    <button id="play-again" type="button" class="big-button">Main Lagi</button>
+  </div>
+</div>
+
+<div id="loss-screen" class="overlay hidden">
+  <div class="panel loss">
+    <h1 class="loss-title">DEFEAT</h1>
+    <p id="loss-reason" class="loss-sub"></p>
+    <p class="loss-hint">Coba lagi — baca niat Warden dan simpan Guard untuk serangan besarnya.</p>
+    <div id="loss-stats" class="stats"></div>
+    <button id="try-again" type="button" class="big-button">Coba Lagi</button>
+  </div>
+</div>
+
+<div id="pause-screen" class="overlay hidden">
+  <div class="panel">
+    <h1>JEDA</h1>
+    <p class="tagline">Duel menunggu. Tarik napas, susun rencana.</p>
+    <button id="resume-button" type="button" class="big-button">Lanjutkan</button>
+  </div>
+</div>
+
+<script src="src/config.js"></script>
+<script src="src/random.js"></script>
+<script src="src/cards.js"></script>
+<script src="src/deck.js"></script>
+<script src="src/ai.js"></script>
+<script src="src/rules.js"></script>
+<script src="src/render.js"></script>
+<script src="src/audio.js"></script>
+<script src="src/shots.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
